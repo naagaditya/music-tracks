@@ -2,7 +2,10 @@
 	<head>
 	</head>
 	<body ng-app="musicApp">
-
+		<ul class="nav nav-tabs">
+			<li role="presentation" ng-class="{active: currentTab==='musicTracks' || currentTab===undefined}"><a href="/tracks">Music Tracks</a></li>
+			<li role="presentation" ng-class="{active: currentTab==='tracksGenres'}"><a href="/genres">Track's Genres</a></li>
+		</ul>
 		<script type="text/javascript" src="assets/lib/angular.min.js"></script>
 		<script type="text/javascript" src="app/musicApp.js"></script>
 
