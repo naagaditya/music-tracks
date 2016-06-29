@@ -6,27 +6,25 @@
 		return {
 			getAllGenres: function () {
 		    	return $http.get('http://104.197.128.152:8000/v1/genres');
-		    }
+		    },
 
 		    getGenreById: function (id) {
 		    	return $http.get('http://104.197.128.152:8000/v1/genres/' + id);
-		    }
+		    },
 
 		    editGenre: function (id, genre) {
 		    	return $http.patch(
 		    		'http://104.197.128.152:8000/v1/genres/' + id,
-		    		track
+		    		genre
 		    	);
-		    }
+		    },
 
 		    addGenre: function (genre) {
 		    	return $http.post(
 		    		'http://104.197.128.152:8000/v1/genres',
-		    		track
+		    		genre
 		    	);
 		    }
-
-		}
 		};
 	});
 

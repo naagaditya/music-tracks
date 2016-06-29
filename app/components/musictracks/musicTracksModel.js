@@ -56,16 +56,16 @@
         	};
         })();
         var manipulator = {
-                getNewInstance: function () {
-                    var ci = new MusicTracksModel();
-                    currentData = ci;
-                    return ci;
+            getNewInstance: function () {
+                var ci = new MusicTracksModel();
+                currentData = ci;
+                return ci;
 
-                },
-                getCurrentInstance: function () {
-                    return currentData;
-                }
-            };
+            },
+            getCurrentInstance: function () {
+                return currentData;
+            }
+        };
 
         return function () {
             return manipulator;
