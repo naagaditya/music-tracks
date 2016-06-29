@@ -16,10 +16,12 @@
           Rating: <input ng-model="currentMusicTrack.rating">
         </div>
         <div>
-          Genre: <span ng-repeat="genre in currentMusicTrack.genres">{{genre.name + ' '}}</span>
-          <a href="" ng-click="addGenre=true">add genre</a>
+          Genre: 
+          <span ng-repeat="genre in currentMusicTrack.genres">{{genre.name + ' '}}
+            <button ng-click="currentMusicTrack.genres.splice($index,1)">&times;</button>
+          </span>
           <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Tracks Genres
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add Tracks Genres
             <span class="caret"></span></button>
             <ul class="dropdown-menu">
               <li ng-repeat="genre in tracksGenres.trackGenresById"
