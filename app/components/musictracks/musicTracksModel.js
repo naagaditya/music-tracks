@@ -3,7 +3,7 @@
     musicTracksModel.factory('MusicTracksModel', function (musicTracksService, $q) {
         var currentData = '';
         function MusicTracksModel () {
-            this.musicTracks = {};
+            this.musicTracksById = {};
         }
         MusicTracksModel.prototype = (function() {
         	function getAllMusicTracks () {
@@ -11,7 +11,9 @@
         			deferred = $q.defer(),
         			self = this;
     			promise.then(function (response) {
-    				self.musicTracks = response.data;
+                    response.data.forEach(function (musicTrack) {
+                        self.musicTracksById[musicTrack.id] = musicTrack;
+                    });
     				deferred.resolve('success');
     			}, function (error) {
     				deferred.reject(error);
@@ -24,6 +26,8 @@
                     deferred = $q.defer(),
                     self = this;
                 promise.then(function (response) {
+                    var musicTrack = response.data;
+                    self.musicTracksById[musicTrack.id] = musicTrack;
                     deferred.resolve('success');
                 }, function (error) {
                     deferred.reject(error);
@@ -36,6 +40,8 @@
                     deferred = $q.defer(),
                     self = this;
                 promise.then(function (response) {
+                    var musicTrack = response.data;
+                    self.musicTracksById[musicTrack.id] = musicTrack;
                     deferred.resolve('success');
                 }, function (error) {
                     deferred.reject(error);
