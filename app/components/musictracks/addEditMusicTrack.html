@@ -9,9 +9,27 @@
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body">
-        Title: <input ng-model="currentMusicTrack.title">
-        Rating: <input ng-model="currentMusicTrack.rating">
-        Genre: <input ng-model="currentMusicTrack.genre">
+        <div>
+          Title: <input ng-model="currentMusicTrack.title">
+        </div>
+        <div>
+          Rating: <input ng-model="currentMusicTrack.rating">
+        </div>
+        <div>
+          Genre: <span ng-repeat="genre in currentMusicTrack.genres">{{genre.name + ' '}}</span>
+          <a href="" ng-click="addGenre=true">add genre</a>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Tracks Genres
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li ng-repeat="genre in tracksGenres.trackGenresById"
+                  ng-click="currentMusicTrack.genres.push(genre)">
+                <a>{{genre.name}}</a>
+              </li>
+              <a ng-show="!allTracksGenresLoaded" ng-click="getNextTracksGenres()">more</a
+            </ul>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
       	<button type="button" class="btn btn-success" data-dismiss="modal" ng-click="saveMusicTrack(currentMusicTrack)">Save</button>

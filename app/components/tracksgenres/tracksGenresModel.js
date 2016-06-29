@@ -5,14 +5,16 @@
 		var currentData = '';
 		function TrackGenresModel () {
 			this.trackGenresById = {};
+			this.count = 0;
 		}
 		TrackGenresModel.prototype = (function () {
-			function getAllTrackGenres () {
-				var promise = tracksGenresService.getAllGenres(),
+			function getAllTrackGenres (pageNumber) {
+				var promise = tracksGenresService.getAllGenres(pageNumber),
 					deferred = $q.defer(),
 					self = this;
 				promise.then(function (response) {
-					response.data.forEach(function (trackGenre) {
+					self.count = response.data.count;
+					response.data.results.forEach(function (trackGenre) {
 						self.trackGenresById[trackGenre.id] = trackGenre;	
 					})
 					deferred.resolve('success');

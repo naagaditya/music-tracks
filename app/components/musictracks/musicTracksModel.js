@@ -11,7 +11,7 @@
         			deferred = $q.defer(),
         			self = this;
     			promise.then(function (response) {
-                    response.data.forEach(function (musicTrack) {
+                    response.data.results.forEach(function (musicTrack) {
                         self.musicTracksById[musicTrack.id] = musicTrack;
                     });
     				deferred.resolve('success');

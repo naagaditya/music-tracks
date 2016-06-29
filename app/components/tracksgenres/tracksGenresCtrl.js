@@ -1,7 +1,11 @@
 (function() {
 	'use strict';
 	var tracksGenres = angular.module('tracksGenres.Controller', ['TrackGenres.Model']);
-	tracksGenres.controller('tracksGenresController', function($rootScope, $scope, TrackGenresModel){
+	tracksGenres.controller('tracksGenresController', function(
+			$rootScope,
+			$scope,
+			TrackGenresModel
+		){
 		$rootScope.currentTab = 'tracksGenres';
 		$scope.tracksGenres = TrackGenresModel().getNewInstance();
 		$scope.tracksGenres.getAllTrackGenres();

@@ -4,8 +4,8 @@
 
 	tracksGenresService.factory('tracksGenresService', function($http){
 		return {
-			getAllGenres: function () {
-		    	return $http.get('http://104.197.128.152:8000/v1/genres');
+			getAllGenres: function (pageNumber) {
+		    	return $http.get('http://104.197.128.152:8000/v1/genres?page='+ pageNumber);
 		    },
 
 		    getGenreById: function (id) {
