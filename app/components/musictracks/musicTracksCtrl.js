@@ -6,7 +6,8 @@
 		$scope.musicTracks = MusicTracksModel().getNewInstance();
 		$scope.musicTracks.getAllMusicTracks();
 		$scope.addEditMusicTrack = function (musicTrack) {
-			$scope.currentMusicTrack = musicTrack || {};
+			$scope.currentMusicTrack = {};
+			angular.copy(musicTrack, $scope.currentMusicTrack)
 		}
 		$scope.saveMusicTrack = function (musicTrack) {
 			if (musicTrack && musicTrack.id) {
