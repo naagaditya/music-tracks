@@ -10,15 +10,27 @@
 			MusicTracksModel,
 			TrackGenresModel
 		){
-		var tracksGenresPageNumber = 1, tracksGenresOffset = 20;
+		var tracksGenresPageNumber = 1,
+			tracksGenresOffset = 20,
+			tracksGenres = TrackGenresModel().getNewInstance();
+		$scope.tracksGenres = {};
 		$rootScope.currentTab = 'musicTracks';
 		$scope.musicTracks = MusicTracksModel().getNewInstance();
 		$scope.musicTracks.getAllMusicTracks();
-		$scope.tracksGenres = TrackGenresModel().getNewInstance();
-		$scope.tracksGenres.getAllTrackGenres(tracksGenresPageNumber);
+		tracksGenres.getAllTrackGenres(tracksGenresPageNumber)
+		.then(function () {
+			$scope.tracksGenres = tracksGenres.trackGenresById;
+		});
 		$scope.addEditMusicTrack = function (musicTrack) {
-			$scope.currentMusicTrack = {};
-			angular.copy(musicTrack, $scope.currentMusicTrack)
+			$scope.currentMusicTrack = {
+				'title': '',
+				'id': '',
+				'genres': [],
+				'rating': 0
+			};
+			if (musicTrack) {
+				angular.copy(musicTrack, $scope.currentMusicTrack);
+			}
 		}
 		$scope.saveMusicTrack = function (musicTrack) {
 			if (musicTrack && musicTrack.id) {
@@ -29,7 +41,10 @@
 		}
 		$scope.getNextTracksGenres = function () {
 			tracksGenresPageNumber++;
-			$scope.tracksGenres.getAllTrackGenres(tracksGenresPageNumber);
+			tracksGenres.getAllTrackGenres(tracksGenresPageNumber)
+			.then(function () {
+				angular.extend($scope.tracksGenres, tracksGenres.trackGenresById);
+			});
 			$scope.allTracksGenresLoaded = 
 				(tracksGenresPageNumber * tracksGenresOffset) >= $scope.tracksGenres.count;
 		}

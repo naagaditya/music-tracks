@@ -14,6 +14,7 @@
 					self = this;
 				promise.then(function (response) {
 					self.count = response.data.count;
+					self.trackGenresById = {};
 					response.data.results.forEach(function (trackGenre) {
 						self.trackGenresById[trackGenre.id] = trackGenre;	
 					})

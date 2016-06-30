@@ -24,7 +24,7 @@
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add Tracks Genres
             <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li ng-repeat="genre in tracksGenres.trackGenresById"
+              <li ng-repeat="genre in tracksGenres"
                   ng-click="currentMusicTrack.genres.push(genre)">
                 <a>{{genre.name}}</a>
               </li>
