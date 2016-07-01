@@ -4,13 +4,16 @@
         var currentData = '';
         function MusicTracksModel () {
             this.musicTracksById = {};
+            this.count = 0;
         }
         MusicTracksModel.prototype = (function() {
-        	function getAllMusicTracks () {
-        		var promise = musicTracksService.getAllTracks(),
+        	function getAllMusicTracks (pagenumber) {
+        		var promise = musicTracksService.getAllTracks(pagenumber),
         			deferred = $q.defer(),
         			self = this;
     			promise.then(function (response) {
+                    self.count = response.data.count;
+                    self.musicTracksById = {};
                     response.data.results.forEach(function (musicTrack) {
                         self.musicTracksById[musicTrack.id] = musicTrack;
                     });

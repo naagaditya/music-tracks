@@ -1,5 +1,10 @@
 (function() {
-	var app = angular.module('musicApp', ['ngRoute', 'musicTracks.Controller', 'tracksGenres.Controller']);
+	var app = angular.module('musicApp', [
+        'ngRoute',
+        'musicTracks.Controller',
+        'tracksGenres.Controller',
+        'pagination.Controller'
+    ]);
 
 	app.config(function ($routeProvider) {
 		$routeProvider

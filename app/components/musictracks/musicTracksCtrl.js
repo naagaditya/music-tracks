@@ -16,7 +16,7 @@
 		$scope.tracksGenres = {};
 		$rootScope.currentTab = 'musicTracks';
 		$scope.musicTracks = MusicTracksModel().getNewInstance();
-		$scope.musicTracks.getAllMusicTracks();
+		$scope.musicTracks.getAllMusicTracks(1);
 		tracksGenres.getAllTrackGenres(tracksGenresPageNumber)
 		.then(function () {
 			$scope.tracksGenres = tracksGenres.trackGenresById;

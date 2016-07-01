@@ -4,8 +4,8 @@
 
 	musicTracksService.factory('musicTracksService', function($http){
 		return {
-			getAllTracks: function () {
-		    	return $http.get('http://104.197.128.152:8000/v1/tracks');
+			getAllTracks: function (pageNumber) {
+		    	return $http.get('http://104.197.128.152:8000/v1/tracks?page='+ pageNumber);
 		    },
 
 		    getTracksByTitle: function (title) {

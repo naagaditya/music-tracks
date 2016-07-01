@@ -1,0 +1,17 @@
+<nav>
+  <ul class="pagination">
+    <li ng-class="{disabled: currentPage === 1}">
+      <a href="" aria-label="Previous" ng-click="currentPage !== 1 && setCurrentPage(currentPage-1)">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li ng-class="{active: currentPage === page}" ng-repeat="page in displayPages">
+    	<a href="" ng-click="setCurrentPage(page)">{{page}}</a>
+    </li>
+    <li ng-class="{disabled: currentPage === lastPage}">
+      <a href="" aria-label="Next" ng-click="currentPage !== lastPage && setCurrentPage(currentPage+1)">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
