@@ -1,13 +1,15 @@
 <div>
-	<div class="viewport music-track" ng-repeat="trackGenre in tracksGenres.trackGenresById">
-		{{trackGenre}}
-		<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addEditTrackGenre(trackGenre)">Edit</button>
-		<div ng-include="'app/components/tracksgenres/addEditTrackGenre.html'"></div>
-	</div>
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="trackGenre in tracksGenres.trackGenresById">
+			{{trackGenre.name}}
+			<button type="button" class="btn" data-toggle="modal" data-target="#myModal" ng-click="addEditTrackGenre(trackGenre)">Edit</button>
+			<div ng-include="'app/components/tracksgenres/addEditTrackGenre.html'"></div>
+		</li>
+	</ul>
 	<div
 		ng-include="'app/shared/pagination/pagination.html'"
 		ng-controller="paginationController">
 	</div>
-	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addEditTrackGenre()">Add New Track</button>
+	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal" ng-click="addEditTrackGenre()">Add New Track</button>
 	<div ng-include="'app/components/tracksgenres/addEditTrackGenre.html'"></div>
 </div>

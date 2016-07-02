@@ -33,7 +33,12 @@
 			}
 		}
 		$scope.saveMusicTrack = function (musicTrack) {
-			if (musicTrack && musicTrack.id) {
+			var musicTrackGenres = [];
+			musicTrack.genres.forEach(function (genre) {
+				musicTrackGenres.push(genre.id);
+			});
+			musicTrack.genres = musicTrackGenres;
+			if (musicTrack.id) {
 				$scope.musicTracks.editMusicTrack(musicTrack.id, musicTrack);
 			} else {
 				$scope.musicTracks.addMusicTrack(musicTrack);
@@ -47,6 +52,15 @@
 			});
 			$scope.allTracksGenresLoaded = 
 				(tracksGenresPageNumber * tracksGenresOffset) >= $scope.tracksGenres.count;
+		}
+		$scope.getValidRating = function (rating) {
+			var unitDigit = rating % 10, validRating = rating;
+			if (unitDigit > 0 && unitDigit < 5) {
+				validRating = (Math.floor(rating/10)*10 + 5);
+			} else if (unitDigit > 5 && unitDigit < 10) {
+				validRating = (Math.floor(rating/10)*10 + 10);
+			}
+			return validRating;
 		}
 	});
 
